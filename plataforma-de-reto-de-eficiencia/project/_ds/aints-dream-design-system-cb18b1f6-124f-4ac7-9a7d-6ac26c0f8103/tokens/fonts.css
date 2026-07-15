@@ -1,0 +1,28 @@
+/* aints&dream — Web fonts
+   Display/headline: Fredoka (rounded, bold, playful) — nearest Google Fonts match for the
+   chunky rounded wordmark lettering seen in the brand's "pouch" title reference. The exact
+   custom lettering used there is not a shipped font file, so Fredoka is a SUBSTITUTION —
+   flagged in readme.md. Ask the brand owner for the original title typeface/outlines if available.
+   Body/UI text: Stack Sans Text — matched exactly by name to the brand's reference screenshot,
+   confirmed available as a real, open, self-hostable Google Font family. */
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/fredoka:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Stack Sans Text';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 700;
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/stack-sans-text:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
+}
+
+:root {
+  --font-display: 'Fredoka', ui-rounded, 'Segoe UI', sans-serif;
+  --font-body: 'Stack Sans Text', 'Segoe UI', system-ui, sans-serif;
+}
