@@ -1,0 +1,163 @@
+/* aints&dream — Color tokens
+   Blossom Pink #FFAEEE · Butter Yellow #FEF9B0 · Periwinkle #A9A9EB · Cocoa Brown #6E4027 */
+
+@font-face {
+  font-family: "Fredoka";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/fredoka:vf@latest/latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Stack Sans Text";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 700;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/stack-sans-text:vf@latest/latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+:root {
+  /* ---- Blossom (pink) ---- */
+  --pink-50: #fff9fe;
+  --pink-100: #ffeafb;
+  --pink-200: #ffccf4;
+  --pink-300: #ffaeee;
+  --pink-400: #e69dd6;
+  --pink-500: #cd8cbe;
+  --pink-600: #b57ba6;
+  --pink-700: #9c6a8e;
+  --pink-800: #835976;
+  --pink-900: #6a495e;
+
+  /* ---- Butter (yellow) ---- */
+  --yellow-50: #fffff9;
+  --yellow-100: #fffde0;
+  --yellow-200: #fef9b0;
+  --yellow-300: #e9e4a1;
+  --yellow-400: #d4ce92;
+  --yellow-500: #beb983;
+  --yellow-600: #a9a375;
+  --yellow-700: #948e66;
+  --yellow-800: #7f7857;
+  --yellow-900: #6a6348;
+
+  /* ---- Periwinkle (lavender) ---- */
+  --lavender-50: #f8f8fd;
+  --lavender-100: #ededfb;
+  --lavender-200: #d6d6f6;
+  --lavender-300: #c0c0f0;
+  --lavender-400: #a9a9eb;
+  --lavender-500: #9695cf;
+  --lavender-600: #8482b2;
+  --lavender-700: #716e96;
+  --lavender-800: #5f5a79;
+  --lavender-900: #4c475d;
+
+  /* ---- Cocoa (brown) ---- */
+  --brown-50: #f3f0ee;
+  --brown-100: #e9e2de;
+  --brown-200: #d5c7c0;
+  --brown-300: #c0aca1;
+  --brown-400: #ac9183;
+  --brown-500: #977664;
+  --brown-600: #835b46;
+  --brown-700: #6e4027;
+  --brown-800: #533120;
+  --brown-900: #372218;
+
+  /* ---- Semantic aliases ---- */
+  --surface-page: var(--yellow-50);
+  --surface-card: #ffffff;
+  --surface-sunken: var(--pink-50);
+
+  --text-primary: var(--brown-900);
+  --text-secondary: var(--brown-600);
+  --text-muted: var(--brown-400);
+  --text-on-dark: var(--yellow-50);
+
+  --border-subtle: var(--brown-100);
+  --border-default: var(--brown-200);
+  --border-strong: var(--brown-400);
+
+  --accent-primary: var(--lavender-400);
+  --accent-secondary: var(--pink-300);
+  --accent-tertiary: var(--yellow-200);
+  --accent-ink: var(--brown-700);
+
+  --focus-ring: var(--lavender-500);
+
+  /* ---- Type scale ---- */
+  --font-display: "Fredoka", ui-rounded, "Segoe UI", sans-serif;
+  --font-body: "Stack Sans Text", "Segoe UI", system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 4rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.02em;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(110, 64, 39, 0.08);
+  --shadow-md: 0 4px 12px rgba(110, 64, 39, 0.1);
+  --shadow-lg: 0 10px 28px rgba(110, 64, 39, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(150, 149, 207, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--lavender-600);
+}
+
+a:hover {
+  color: var(--lavender-700);
+}
