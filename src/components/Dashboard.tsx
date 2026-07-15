@@ -22,7 +22,6 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Badge } from "@/components/ui/Badge";
-import { Checkbox } from "@/components/ui/Checkbox";
 import { Dialog } from "@/components/ui/Dialog";
 import { Toast } from "@/components/ui/Toast";
 
@@ -257,9 +256,8 @@ export function Dashboard({ user }: { user: User }) {
   const [recommendationLoading, setRecommendationLoading] = useState(false);
 
   async function generateRecommendation() {
-    const assigned = tasks.filter((t) => t.role_id);
-    if (assigned.length === 0) {
-      setRecommendationError("Registra tareas primero para poder generar una recomendación.");
+    if (roles.length === 0) {
+      setRecommendationError("Crea al menos un rol para poder generar una recomendación.");
       setRecommendation(null);
       return;
     }
@@ -267,19 +265,11 @@ export function Dashboard({ user }: { user: User }) {
     setRecommendationError("");
     setRecommendation(null);
 
-    const summary = roles.map((r) => {
-      const rTasks = assigned.filter((t) => t.role_id === r.id);
-      const minutes = rTasks.reduce((s, t) => s + t.minutes, 0);
-      const counts = { Alto: 0, Medio: 0, Bajo: 0 };
-      rTasks.forEach((t) => (counts[t.impact] += 1));
-      return { role: r.name, minutes, ...counts };
-    });
-
     try {
       const res = await fetch("/api/recommendation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ summary }),
+        body: JSON.stringify({ roles, goals, tasks }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error");
@@ -292,7 +282,7 @@ export function Dashboard({ user }: { user: User }) {
   }
 
   // --- Balance ---
-  const assignedTasks = tasks.filter((t) => t.role_id);
+  const assignedTasks = tasks.filter((t) => t.role_id && t.done);
   const totalMinutes = assignedTasks.reduce((s, t) => s + t.minutes, 0);
   const roleStats = useMemo(
     () =>
@@ -634,11 +624,14 @@ export function Dashboard({ user }: { user: User }) {
                     gap: 12,
                     padding: "14px 16px 14px 18px",
                     borderRadius: "var(--radius-lg)",
-                    background: t.done ? "var(--yellow-100)" : "var(--yellow-200)",
+                    background: t.done ? "var(--yellow-200)" : "var(--yellow-100)",
+                    opacity: t.done ? 1 : 0.7,
                     flexWrap: "wrap",
                   }}
                 >
-                  <Checkbox checked={t.done} onChange={() => handleToggleDone(t.id, t.done)} />
+                  <Button variant={t.done ? "primary" : "ghost"} size="sm" onClick={() => handleToggleDone(t.id, t.done)}>
+                    {t.done ? "Confirmada ✓" : `Confirmar ${formatDuration(t.minutes)}`}
+                  </Button>
                   <Badge color="ink">{role ? role.name : "Sin rol"}</Badge>
                   <Badge color={IMPACT_BADGE_COLOR[t.impact]}>{t.impact}</Badge>
                   <span
@@ -647,8 +640,7 @@ export function Dashboard({ user }: { user: User }) {
                       minWidth: 160,
                       fontSize: "var(--text-base)",
                       fontWeight: "var(--weight-medium)",
-                      color: t.done ? "var(--brown-400)" : "var(--brown-900)",
-                      textDecoration: t.done ? "line-through" : "none",
+                      color: "var(--brown-900)",
                     }}
                   >
                     {t.title}
