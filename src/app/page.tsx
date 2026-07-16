@@ -29,7 +29,7 @@ export default function Home() {
     <div style={{ minHeight: "100vh", background: "var(--surface-page)", position: "relative" }}>
       <div style={{ paddingTop: 40, paddingBottom: 32, textAlign: "center" }}>
         <h1 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "var(--text-5xl)", color: "var(--brown-900)" }}>
-          Aints&amp;dream
+          Aims&amp;dream
         </h1>
         <span style={{ display: "block", marginTop: 6, fontFamily: "var(--font-body)", fontSize: "var(--text-lg)", fontWeight: "var(--weight-medium)", color: "var(--text-secondary)" }}>
           Sé productivo
